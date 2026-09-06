@@ -21,6 +21,10 @@ public class Exhibition extends BaseAuditableEntity {
     @Column(nullable = false, unique = true, length = 150)
     private String slug;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private ExhibitionType type;
+
     @Column(columnDefinition = "text")
     private String description;
 
@@ -29,6 +33,9 @@ public class Exhibition extends BaseAuditableEntity {
 
     @Column(name = "end_date")
     private LocalDate endDate;
+
+    @Column
+    private Integer year;
 
     @Column(name = "location_name", length = 150)
     private String locationName;

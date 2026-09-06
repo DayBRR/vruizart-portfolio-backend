@@ -86,18 +86,20 @@ public class PublicPortfolioService {
 
     public List<ExhibitionResponse> getExhibitions() {
         return exhibitionRepository.findAllByOrderBySortOrderAscStartDateDescTitleAsc().stream()
-                .map(e -> new ExhibitionResponse(
-                        e.getTitle(),
-                        e.getSlug(),
-                        e.getDescription(),
-                        e.getStartDate(),
-                        e.getEndDate(),
-                        e.getLocationName(),
-                        e.getLocationAddress(),
-                        e.getImageUrl(),
-                        e.isCurrent(),
-                        e.getSortOrder()
-                ))
+                .map(e -> ExhibitionResponse.builder()
+                        .title(e.getTitle())
+                        .slug(e.getSlug())
+                        .type(e.getType())
+                        .description(e.getDescription())
+                        .startDate(e.getStartDate())
+                        .endDate(e.getEndDate())
+                        .year(e.getYear())
+                        .locationName(e.getLocationName())
+                        .locationAddress(e.getLocationAddress())
+                        .imageUrl(e.getImageUrl())
+                        .current(e.isCurrent())
+                        .sortOrder(e.getSortOrder())
+                        .build())
                 .toList();
     }
 
