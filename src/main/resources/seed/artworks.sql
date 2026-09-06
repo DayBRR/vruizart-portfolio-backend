@@ -2,7 +2,10 @@
 -- Seed manual: obras
 -- Generado desde listado_obras_desplegables_completos(1).xlsx
 -- style/style_id eliminado intencionadamente.
--- Requiere que collection y technique estén previamente cargadas.
+-- sort_order es independiente por colección.
+-- Torre Utebo eliminada.
+-- The cat lady añadida a Ventanas del alma.
+-- Requiere collection y technique previamente cargadas.
 -- =========================================================
 
 INSERT INTO artwork (
@@ -52,7 +55,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        2
+        1
     ),
     (
         (SELECT id FROM collection WHERE slug = 'paisaje-urbano'),
@@ -68,7 +71,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        3
+        2
     ),
     (
         (SELECT id FROM collection WHERE slug = 'otras-obras'),
@@ -84,7 +87,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        4
+        2
     ),
     (
         (SELECT id FROM collection WHERE slug = 'otras-obras'),
@@ -100,7 +103,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        5
+        3
     ),
     (
         (SELECT id FROM collection WHERE slug = 'paisaje-urbano'),
@@ -116,7 +119,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        6
+        3
     ),
     (
         (SELECT id FROM collection WHERE slug = 'paisaje-urbano'),
@@ -132,7 +135,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        7
+        4
     ),
     (
         (SELECT id FROM collection WHERE slug = 'retratos'),
@@ -148,7 +151,7 @@ VALUES
         'PRIVATE_COLLECTION'::artwork_status,
         FALSE,
         TRUE,
-        8
+        1
     ),
     (
         (SELECT id FROM collection WHERE slug = 'retratos'),
@@ -164,7 +167,7 @@ VALUES
         'PRIVATE_COLLECTION'::artwork_status,
         FALSE,
         TRUE,
-        9
+        2
     ),
     (
         (SELECT id FROM collection WHERE slug = 'paisaje-urbano'),
@@ -180,7 +183,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        10
+        5
     ),
     (
         (SELECT id FROM collection WHERE slug = 'retratos'),
@@ -196,7 +199,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        11
+        3
     ),
     (
         (SELECT id FROM collection WHERE slug = 'paisaje-urbano'),
@@ -212,7 +215,7 @@ VALUES
         'SOLD'::artwork_status,
         FALSE,
         TRUE,
-        12
+        6
     ),
     (
         (SELECT id FROM collection WHERE slug = 'paisaje-urbano'),
@@ -228,7 +231,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        13
+        7
     ),
     (
         (SELECT id FROM collection WHERE slug = 'paisaje-urbano'),
@@ -244,7 +247,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        14
+        8
     ),
     (
         (SELECT id FROM collection WHERE slug = 'retratos'),
@@ -260,7 +263,7 @@ VALUES
         'PRIVATE_COLLECTION'::artwork_status,
         FALSE,
         TRUE,
-        15
+        4
     ),
     (
         (SELECT id FROM collection WHERE slug = 'retratos'),
@@ -276,7 +279,7 @@ VALUES
         'PRIVATE_COLLECTION'::artwork_status,
         FALSE,
         TRUE,
-        16
+        5
     ),
     (
         (SELECT id FROM collection WHERE slug = 'paisaje-urbano'),
@@ -292,7 +295,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        17
+        9
     ),
     (
         (SELECT id FROM collection WHERE slug = 'paisaje-urbano'),
@@ -308,7 +311,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        18
+        10
     ),
     (
         (SELECT id FROM collection WHERE slug = 'paisaje-urbano'),
@@ -324,7 +327,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        19
+        11
     ),
     (
         (SELECT id FROM collection WHERE slug = 'otras-obras'),
@@ -340,7 +343,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        20
+        4
     ),
     (
         (SELECT id FROM collection WHERE slug = 'retratos'),
@@ -356,7 +359,7 @@ VALUES
         'PRIVATE_COLLECTION'::artwork_status,
         FALSE,
         TRUE,
-        21
+        6
     ),
     (
         (SELECT id FROM collection WHERE slug = 'retratos'),
@@ -372,7 +375,7 @@ VALUES
         'PRIVATE_COLLECTION'::artwork_status,
         FALSE,
         TRUE,
-        22
+        7
     ),
     (
         (SELECT id FROM collection WHERE slug = 'ventanas-del-alma'),
@@ -388,7 +391,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        23
+        1
     ),
     (
         (SELECT id FROM collection WHERE slug = 'ventanas-del-alma'),
@@ -404,7 +407,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        24
+        2
     ),
     (
         (SELECT id FROM collection WHERE slug = 'ventanas-del-alma'),
@@ -420,7 +423,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        25
+        3
     ),
     (
         (SELECT id FROM collection WHERE slug = 'ventanas-del-alma'),
@@ -436,7 +439,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        26
+        4
     ),
     (
         (SELECT id FROM collection WHERE slug = 'ventanas-del-alma'),
@@ -452,7 +455,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        27
+        5
     ),
     (
         (SELECT id FROM collection WHERE slug = 'ventanas-del-alma'),
@@ -468,7 +471,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        28
+        6
     ),
     (
         (SELECT id FROM collection WHERE slug = 'ventanas-del-alma'),
@@ -484,7 +487,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        29
+        7
     ),
     (
         (SELECT id FROM collection WHERE slug = 'ventanas-del-alma'),
@@ -500,7 +503,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        30
+        8
     ),
     (
         (SELECT id FROM collection WHERE slug = 'ventanas-del-alma'),
@@ -516,7 +519,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        31
+        9
     ),
     (
         (SELECT id FROM collection WHERE slug = 'ventanas-del-alma'),
@@ -532,7 +535,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        32
+        10
     ),
     (
         (SELECT id FROM collection WHERE slug = 'ventanas-del-alma'),
@@ -548,7 +551,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        33
+        11
     ),
     (
         (SELECT id FROM collection WHERE slug = 'ventanas-del-alma'),
@@ -564,7 +567,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        34
+        12
     ),
     (
         (SELECT id FROM collection WHERE slug = 'ventanas-del-alma'),
@@ -580,7 +583,23 @@ VALUES
         'PRIVATE_COLLECTION'::artwork_status,
         FALSE,
         TRUE,
-        35
+        13
+    ),
+    (
+        (SELECT id FROM collection WHERE slug = 'ventanas-del-alma'),
+        (SELECT id FROM technique WHERE name = 'Carboncillo sobre papel'),
+        'The cat lady',
+        'the-cat-lady',
+        2022,
+        NULL,
+        NULL,
+        40.00,
+        40.00,
+        NULL,
+        'PRIVATE_COLLECTION'::artwork_status,
+        FALSE,
+        TRUE,
+        14
     ),
     (
         (SELECT id FROM collection WHERE slug = '20x20'),
@@ -596,7 +615,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        36
+        1
     ),
     (
         (SELECT id FROM collection WHERE slug = '20x20'),
@@ -612,7 +631,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        37
+        2
     ),
     (
         (SELECT id FROM collection WHERE slug = '20x20'),
@@ -628,7 +647,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        38
+        3
     ),
     (
         (SELECT id FROM collection WHERE slug = '20x20'),
@@ -644,7 +663,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        39
+        4
     ),
     (
         (SELECT id FROM collection WHERE slug = '20x20'),
@@ -660,7 +679,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        40
+        5
     ),
     (
         (SELECT id FROM collection WHERE slug = '20x20'),
@@ -676,7 +695,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        41
+        6
     ),
     (
         (SELECT id FROM collection WHERE slug = '20x20'),
@@ -692,7 +711,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        42
+        7
     ),
     (
         (SELECT id FROM collection WHERE slug = '20x20'),
@@ -708,7 +727,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        43
+        8
     ),
     (
         (SELECT id FROM collection WHERE slug = '20x20'),
@@ -724,7 +743,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        44
+        9
     ),
     (
         (SELECT id FROM collection WHERE slug = '20x20'),
@@ -740,7 +759,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        45
+        10
     ),
     (
         (SELECT id FROM collection WHERE slug = '20x20'),
@@ -756,7 +775,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        46
+        11
     ),
     (
         (SELECT id FROM collection WHERE slug = '20x20'),
@@ -772,7 +791,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        47
+        12
     ),
     (
         (SELECT id FROM collection WHERE slug = '20x20'),
@@ -788,7 +807,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        48
+        13
     ),
     (
         (SELECT id FROM collection WHERE slug = '20x20'),
@@ -804,7 +823,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        49
+        14
     ),
     (
         (SELECT id FROM collection WHERE slug = '20x20'),
@@ -820,7 +839,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        50
+        15
     ),
     (
         (SELECT id FROM collection WHERE slug = '20x20'),
@@ -836,7 +855,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        51
+        16
     ),
     (
         (SELECT id FROM collection WHERE slug = '20x20'),
@@ -852,7 +871,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        52
+        17
     ),
     (
         (SELECT id FROM collection WHERE slug = 'un-cuadro-una-historia'),
@@ -868,7 +887,7 @@ VALUES
         'NOT_FOR_SALE'::artwork_status,
         FALSE,
         TRUE,
-        53
+        1
     ),
     (
         (SELECT id FROM collection WHERE slug = 'un-cuadro-una-historia'),
@@ -884,7 +903,7 @@ VALUES
         'NOT_FOR_SALE'::artwork_status,
         FALSE,
         TRUE,
-        54
+        2
     ),
     (
         (SELECT id FROM collection WHERE slug = 'un-cuadro-una-historia'),
@@ -900,7 +919,7 @@ VALUES
         'NOT_FOR_SALE'::artwork_status,
         FALSE,
         TRUE,
-        55
+        3
     ),
     (
         (SELECT id FROM collection WHERE slug = 'un-cuadro-una-historia'),
@@ -916,7 +935,7 @@ VALUES
         'NOT_FOR_SALE'::artwork_status,
         FALSE,
         TRUE,
-        56
+        4
     ),
     (
         (SELECT id FROM collection WHERE slug = 'un-cuadro-una-historia'),
@@ -932,7 +951,7 @@ VALUES
         'NOT_FOR_SALE'::artwork_status,
         FALSE,
         TRUE,
-        57
+        5
     ),
     (
         (SELECT id FROM collection WHERE slug = 'un-cuadro-una-historia'),
@@ -948,7 +967,7 @@ VALUES
         'NOT_FOR_SALE'::artwork_status,
         FALSE,
         TRUE,
-        58
+        6
     ),
     (
         (SELECT id FROM collection WHERE slug = 'un-cuadro-una-historia'),
@@ -964,7 +983,7 @@ VALUES
         'NOT_FOR_SALE'::artwork_status,
         FALSE,
         TRUE,
-        59
+        7
     ),
     (
         (SELECT id FROM collection WHERE slug = 'un-cuadro-una-historia'),
@@ -980,7 +999,7 @@ VALUES
         'NOT_FOR_SALE'::artwork_status,
         FALSE,
         TRUE,
-        60
+        8
     ),
     (
         (SELECT id FROM collection WHERE slug = 'un-cuadro-una-historia'),
@@ -996,7 +1015,7 @@ VALUES
         'NOT_FOR_SALE'::artwork_status,
         FALSE,
         TRUE,
-        61
+        9
     ),
     (
         (SELECT id FROM collection WHERE slug = 'un-cuadro-una-historia'),
@@ -1012,7 +1031,7 @@ VALUES
         'NOT_FOR_SALE'::artwork_status,
         FALSE,
         TRUE,
-        62
+        10
     ),
     (
         (SELECT id FROM collection WHERE slug = 'un-cuadro-una-historia'),
@@ -1028,7 +1047,7 @@ VALUES
         'NOT_FOR_SALE'::artwork_status,
         FALSE,
         TRUE,
-        63
+        11
     ),
     (
         (SELECT id FROM collection WHERE slug = 'un-cuadro-una-historia'),
@@ -1044,7 +1063,7 @@ VALUES
         'NOT_FOR_SALE'::artwork_status,
         FALSE,
         TRUE,
-        64
+        12
     ),
     (
         (SELECT id FROM collection WHERE slug = 'un-cuadro-una-historia'),
@@ -1060,7 +1079,7 @@ VALUES
         'NOT_FOR_SALE'::artwork_status,
         FALSE,
         TRUE,
-        65
+        13
     ),
     (
         (SELECT id FROM collection WHERE slug = 'un-cuadro-una-historia'),
@@ -1076,7 +1095,7 @@ VALUES
         'NOT_FOR_SALE'::artwork_status,
         FALSE,
         TRUE,
-        66
+        14
     ),
     (
         (SELECT id FROM collection WHERE slug = 'un-cuadro-una-historia'),
@@ -1092,7 +1111,7 @@ VALUES
         'NOT_FOR_SALE'::artwork_status,
         FALSE,
         TRUE,
-        67
+        15
     ),
     (
         (SELECT id FROM collection WHERE slug = 'un-cuadro-una-historia'),
@@ -1108,7 +1127,7 @@ VALUES
         'NOT_FOR_SALE'::artwork_status,
         FALSE,
         TRUE,
-        68
+        16
     ),
     (
         (SELECT id FROM collection WHERE slug = 'un-cuadro-una-historia'),
@@ -1124,7 +1143,7 @@ VALUES
         'NOT_FOR_SALE'::artwork_status,
         FALSE,
         TRUE,
-        69
+        17
     ),
     (
         (SELECT id FROM collection WHERE slug = 'un-cuadro-una-historia'),
@@ -1140,7 +1159,7 @@ VALUES
         'NOT_FOR_SALE'::artwork_status,
         FALSE,
         TRUE,
-        70
+        18
     ),
     (
         (SELECT id FROM collection WHERE slug = 'un-cuadro-una-historia'),
@@ -1156,7 +1175,7 @@ VALUES
         'NOT_FOR_SALE'::artwork_status,
         FALSE,
         TRUE,
-        71
+        19
     ),
     (
         (SELECT id FROM collection WHERE slug = 'un-cuadro-una-historia'),
@@ -1172,7 +1191,7 @@ VALUES
         'NOT_FOR_SALE'::artwork_status,
         FALSE,
         TRUE,
-        72
+        20
     ),
     (
         (SELECT id FROM collection WHERE slug = 'un-cuadro-una-historia'),
@@ -1188,7 +1207,7 @@ VALUES
         'NOT_FOR_SALE'::artwork_status,
         FALSE,
         TRUE,
-        73
+        21
     ),
     (
         (SELECT id FROM collection WHERE slug = 'leyendas-de-la-musica'),
@@ -1204,7 +1223,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        74
+        1
     ),
     (
         (SELECT id FROM collection WHERE slug = 'leyendas-de-la-musica'),
@@ -1220,7 +1239,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        75
+        2
     ),
     (
         (SELECT id FROM collection WHERE slug = 'leyendas-de-la-musica'),
@@ -1236,7 +1255,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        76
+        3
     ),
     (
         (SELECT id FROM collection WHERE slug = 'leyendas-de-la-musica'),
@@ -1252,7 +1271,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        77
+        4
     ),
     (
         (SELECT id FROM collection WHERE slug = 'leyendas-de-la-musica'),
@@ -1268,7 +1287,7 @@ VALUES
         'SOLD'::artwork_status,
         FALSE,
         TRUE,
-        78
+        5
     ),
     (
         (SELECT id FROM collection WHERE slug = 'leyendas-de-la-musica'),
@@ -1284,7 +1303,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        79
+        6
     ),
     (
         (SELECT id FROM collection WHERE slug = 'leyendas-de-la-musica'),
@@ -1300,7 +1319,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        80
+        7
     ),
     (
         (SELECT id FROM collection WHERE slug = 'leyendas-de-la-musica'),
@@ -1316,7 +1335,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        81
+        8
     ),
     (
         (SELECT id FROM collection WHERE slug = 'leyendas-de-la-musica'),
@@ -1332,7 +1351,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        82
+        9
     ),
     (
         (SELECT id FROM collection WHERE slug = 'leyendas-de-la-musica'),
@@ -1348,7 +1367,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        83
+        10
     ),
     (
         (SELECT id FROM collection WHERE slug = 'leyendas-de-la-musica'),
@@ -1364,7 +1383,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        84
+        11
     ),
     (
         (SELECT id FROM collection WHERE slug = 'leyendas-de-la-musica'),
@@ -1380,7 +1399,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        85
+        12
     ),
     (
         (SELECT id FROM collection WHERE slug = 'leyendas-de-la-musica'),
@@ -1396,7 +1415,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        86
+        13
     ),
     (
         (SELECT id FROM collection WHERE slug = 'leyendas-de-la-musica'),
@@ -1412,7 +1431,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        87
+        14
     ),
     (
         (SELECT id FROM collection WHERE slug = 'leyendas-de-la-musica'),
@@ -1428,7 +1447,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        88
+        15
     ),
     (
         (SELECT id FROM collection WHERE slug = 'leyendas-de-la-musica'),
@@ -1444,7 +1463,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        89
+        16
     ),
     (
         (SELECT id FROM collection WHERE slug = 'leyendas-de-la-musica'),
@@ -1460,7 +1479,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        90
+        17
     ),
     (
         (SELECT id FROM collection WHERE slug = 'leyendas-de-la-musica'),
@@ -1476,7 +1495,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        91
+        18
     ),
     (
         (SELECT id FROM collection WHERE slug = 'leyendas-de-la-musica'),
@@ -1492,7 +1511,7 @@ VALUES
         'SOLD'::artwork_status,
         FALSE,
         TRUE,
-        92
+        19
     ),
     (
         (SELECT id FROM collection WHERE slug = 'leyendas-de-la-musica'),
@@ -1508,7 +1527,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        93
+        20
     ),
     (
         (SELECT id FROM collection WHERE slug = 'leyendas-de-la-musica'),
@@ -1524,7 +1543,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        94
+        21
     ),
     (
         (SELECT id FROM collection WHERE slug = 'leyendas-de-la-musica'),
@@ -1540,7 +1559,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        95
+        22
     ),
     (
         (SELECT id FROM collection WHERE slug = 'leyendas-de-la-musica'),
@@ -1556,7 +1575,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        96
+        23
     ),
     (
         (SELECT id FROM collection WHERE slug = 'paisaje-urbano'),
@@ -1572,7 +1591,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        97
+        12
     ),
     (
         (SELECT id FROM collection WHERE slug = 'paisaje-urbano'),
@@ -1588,7 +1607,7 @@ VALUES
         'SOLD'::artwork_status,
         FALSE,
         TRUE,
-        98
+        13
     ),
     (
         (SELECT id FROM collection WHERE slug = 'paisaje-urbano'),
@@ -1604,7 +1623,7 @@ VALUES
         'PRIVATE_COLLECTION'::artwork_status,
         FALSE,
         TRUE,
-        99
+        14
     ),
     (
         (SELECT id FROM collection WHERE slug = 'paisaje-urbano'),
@@ -1620,7 +1639,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        100
+        15
     ),
     (
         (SELECT id FROM collection WHERE slug = 'paisaje-urbano'),
@@ -1636,7 +1655,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        101
+        16
     ),
     (
         (SELECT id FROM collection WHERE slug = 'paisaje-urbano'),
@@ -1652,7 +1671,7 @@ VALUES
         'SOLD'::artwork_status,
         FALSE,
         TRUE,
-        102
+        17
     ),
     (
         (SELECT id FROM collection WHERE slug = 'paisaje-urbano'),
@@ -1668,7 +1687,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        103
+        18
     ),
     (
         (SELECT id FROM collection WHERE slug = 'paisaje-urbano'),
@@ -1684,7 +1703,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        104
+        19
     ),
     (
         (SELECT id FROM collection WHERE slug = 'retratos'),
@@ -1700,7 +1719,7 @@ VALUES
         'PRIVATE_COLLECTION'::artwork_status,
         FALSE,
         TRUE,
-        105
+        8
     ),
     (
         (SELECT id FROM collection WHERE slug = 'retratos'),
@@ -1716,7 +1735,7 @@ VALUES
         'PRIVATE_COLLECTION'::artwork_status,
         FALSE,
         TRUE,
-        106
+        9
     ),
     (
         (SELECT id FROM collection WHERE slug = 'retratos'),
@@ -1732,7 +1751,7 @@ VALUES
         'PRIVATE_COLLECTION'::artwork_status,
         FALSE,
         TRUE,
-        107
+        10
     ),
     (
         (SELECT id FROM collection WHERE slug = 'retratos'),
@@ -1748,7 +1767,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        108
+        11
     ),
     (
         (SELECT id FROM collection WHERE slug = 'retratos'),
@@ -1764,7 +1783,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        109
+        12
     ),
     (
         (SELECT id FROM collection WHERE slug = 'retratos'),
@@ -1780,7 +1799,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        110
+        13
     ),
     (
         (SELECT id FROM collection WHERE slug = 'retratos'),
@@ -1796,7 +1815,7 @@ VALUES
         'SOLD'::artwork_status,
         FALSE,
         TRUE,
-        111
+        14
     ),
     (
         (SELECT id FROM collection WHERE slug = 'retratos'),
@@ -1812,7 +1831,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        112
+        15
     ),
     (
         (SELECT id FROM collection WHERE slug = 'retratos'),
@@ -1828,7 +1847,7 @@ VALUES
         'SOLD'::artwork_status,
         FALSE,
         TRUE,
-        113
+        16
     ),
     (
         (SELECT id FROM collection WHERE slug = 'retratos'),
@@ -1844,7 +1863,7 @@ VALUES
         'SOLD'::artwork_status,
         FALSE,
         TRUE,
-        114
+        17
     ),
     (
         (SELECT id FROM collection WHERE slug = 'retratos'),
@@ -1860,7 +1879,7 @@ VALUES
         'PRIVATE_COLLECTION'::artwork_status,
         FALSE,
         TRUE,
-        115
+        18
     ),
     (
         (SELECT id FROM collection WHERE slug = 'retratos'),
@@ -1876,7 +1895,7 @@ VALUES
         'PRIVATE_COLLECTION'::artwork_status,
         FALSE,
         TRUE,
-        116
+        19
     ),
     (
         (SELECT id FROM collection WHERE slug = 'retratos'),
@@ -1892,7 +1911,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        117
+        20
     ),
     (
         (SELECT id FROM collection WHERE slug = 'retratos'),
@@ -1908,7 +1927,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        118
+        21
     ),
     (
         (SELECT id FROM collection WHERE slug = 'retratos'),
@@ -1924,7 +1943,7 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        119
+        22
     ),
     (
         (SELECT id FROM collection WHERE slug = 'retratos'),
@@ -1940,7 +1959,7 @@ VALUES
         'PRIVATE_COLLECTION'::artwork_status,
         FALSE,
         TRUE,
-        120
+        23
     ),
     (
         (SELECT id FROM collection WHERE slug = 'retratos'),
@@ -1956,23 +1975,7 @@ VALUES
         'PRIVATE_COLLECTION'::artwork_status,
         FALSE,
         TRUE,
-        121
-    ),
-    (
-        (SELECT id FROM collection WHERE slug = 'paisaje-urbano'),
-        (SELECT id FROM technique WHERE name = 'Óleo sobre lienzo'),
-        'Torre Utebo',
-        'torre-utebo',
-        2024,
-        NULL,
-        NULL,
-        60.00,
-        81.00,
-        NULL,
-        'AVAILABLE'::artwork_status,
-        FALSE,
-        TRUE,
-        122
+        24
     ),
     (
         (SELECT id FROM collection WHERE slug = 'otras-obras'),
@@ -1988,7 +1991,7 @@ VALUES
         'SOLD'::artwork_status,
         FALSE,
         TRUE,
-        123
+        5
     ),
     (
         (SELECT id FROM collection WHERE slug = 'otras-obras'),
@@ -2004,6 +2007,6 @@ VALUES
         'AVAILABLE'::artwork_status,
         FALSE,
         TRUE,
-        124
+        6
     )
     ON CONFLICT (slug) DO NOTHING;
