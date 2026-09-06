@@ -26,18 +26,19 @@ public class PublicPortfolioService {
 
     public ArtistProfileResponse getProfile() {
         return artistProfileRepository.findAll().stream().findFirst()
-                .map(p -> new ArtistProfileResponse(
-                        p.getName(),
-                        p.getSubtitle(),
-                        p.getBio(),
-                        p.getStatement(),
-                        p.getProfileImageUrl(),
-                        p.getSignatureImageUrl(),
-                        p.getInstagram(),
-                        p.getFacebook(),
-                        p.getYoutube(),
-                        p.getEmail()
-                ))
+                .map(p -> ArtistProfileResponse.builder()
+                        .name(p.getName())
+                        .subtitle(p.getSubtitle())
+                        .bio(p.getBio())
+                        .statement(p.getStatement())
+                        .quote(p.getQuote())
+                        .profileImageUrl(p.getProfileImageUrl())
+                        .signatureImageUrl(p.getSignatureImageUrl())
+                        .instagram(p.getInstagram())
+                        .facebook(p.getFacebook())
+                        .youtube(p.getYoutube())
+                        .email(p.getEmail())
+                        .build())
                 .orElseThrow(() -> new EntityNotFoundException("Artist profile not found"));
     }
 
@@ -103,9 +104,9 @@ public class PublicPortfolioService {
     public List<PublicationResponse> getPublications(Boolean featured) {
         var items = Boolean.TRUE.equals(featured)
                 ? publicationRepository
-                    .findByVisibleTrueAndFeaturedTrueOrderBySortOrderAscPublicationDateDescTitleAsc()
+                .findByVisibleTrueAndFeaturedTrueOrderBySortOrderAscPublicationDateDescTitleAsc()
                 : publicationRepository
-                    .findByVisibleTrueOrderBySortOrderAscPublicationDateDescTitleAsc();
+                .findByVisibleTrueOrderBySortOrderAscPublicationDateDescTitleAsc();
 
         return items.stream()
                 .map(p -> new PublicationResponse(
