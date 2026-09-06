@@ -193,7 +193,6 @@ public class PublicPortfolioService {
                 artwork.getCollection() != null ? artwork.getCollection().getName() : null,
                 artwork.getCollection() != null ? artwork.getCollection().getSlug() : null,
                 artwork.getTechnique() != null ? artwork.getTechnique().getName() : null,
-                artwork.getStyle() != null ? artwork.getStyle().getName() : null,
                 mainImage,
                 images
         );

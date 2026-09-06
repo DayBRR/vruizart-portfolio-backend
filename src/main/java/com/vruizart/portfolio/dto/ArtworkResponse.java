@@ -17,7 +17,6 @@ public record ArtworkResponse(
         String collectionName,
         String collectionSlug,
         String technique,
-        String style,
         String mainImageUrl,
         List<ArtworkImageResponse> images
 ) {}

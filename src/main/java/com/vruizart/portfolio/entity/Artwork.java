@@ -27,10 +27,6 @@ public class Artwork extends BaseAuditableEntity {
     @JoinColumn(name = "technique_id")
     private Technique technique;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "style_id")
-    private Style style;
-
     @Column(nullable = false, length = 150)
     private String title;
 
