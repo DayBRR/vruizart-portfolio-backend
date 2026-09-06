@@ -4,15 +4,16 @@ import com.vruizart.portfolio.dto.ContactMessageRequest;
 import com.vruizart.portfolio.dto.ContactMessageResponse;
 import com.vruizart.portfolio.service.ContactService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/public/contact")
+@RequiredArgsConstructor
 public class ContactController {
-    private final ContactService service;
 
-    public ContactController(ContactService service) { this.service = service; }
+    private final ContactService service;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
