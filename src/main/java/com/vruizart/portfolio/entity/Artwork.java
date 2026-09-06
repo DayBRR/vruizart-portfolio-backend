@@ -1,0 +1,79 @@
+package com.vruizart.portfolio.entity;
+
+import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+@Entity
+@Table(name = "artwork")
+public class Artwork extends BaseAuditableEntity {
+    @Id @GeneratedValue
+    private UUID id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "collection_id")
+    private ArtworkCollection collection;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "technique_id")
+    private Technique technique;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "style_id")
+    private Style style;
+
+    @Column(nullable = false, length = 150)
+    private String title;
+    @Column(nullable = false, unique = true, length = 150)
+    private String slug;
+    private Integer year;
+    @Column(columnDefinition = "text")
+    private String description;
+    @Column(columnDefinition = "text")
+    private String observations;
+    @Column(name = "width_cm", precision = 6, scale = 2)
+    private BigDecimal widthCm;
+    @Column(name = "height_cm", precision = 6, scale = 2)
+    private BigDecimal heightCm;
+    @Column(precision = 10, scale = 2)
+    private BigDecimal price;
+
+    @Enumerated(EnumType.STRING)
+    @JdbcTypeCode(SqlTypes.NAMED_ENUM)
+    @Column(nullable = false, columnDefinition = "artwork_status")
+    private ArtworkStatus status = ArtworkStatus.AVAILABLE;
+
+    @Column(name = "is_featured", nullable = false)
+    private boolean featured = false;
+    @Column(name = "is_visible", nullable = false)
+    private boolean visible = true;
+    @Column(name = "sort_order", nullable = false)
+    private Integer sortOrder = 0;
+
+    @OneToMany(mappedBy = "artwork", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OrderBy("sortOrder ASC")
+    private List<ArtworkImage> images = new ArrayList<>();
+
+    public UUID getId() { return id; }
+    public ArtworkCollection getCollection() { return collection; }
+    public Technique getTechnique() { return technique; }
+    public Style getStyle() { return style; }
+    public String getTitle() { return title; }
+    public String getSlug() { return slug; }
+    public Integer getYear() { return year; }
+    public String getDescription() { return description; }
+    public String getObservations() { return observations; }
+    public BigDecimal getWidthCm() { return widthCm; }
+    public BigDecimal getHeightCm() { return heightCm; }
+    public BigDecimal getPrice() { return price; }
+    public ArtworkStatus getStatus() { return status; }
+    public boolean isFeatured() { return featured; }
+    public boolean isVisible() { return visible; }
+    public Integer getSortOrder() { return sortOrder; }
+    public List<ArtworkImage> getImages() { return images; }
+}
