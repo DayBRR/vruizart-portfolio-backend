@@ -4,8 +4,11 @@ import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
+import lombok.Getter;
+
 import java.time.LocalDateTime;
 
+@Getter
 @MappedSuperclass
 public abstract class BaseAuditableEntity {
 
@@ -18,7 +21,9 @@ public abstract class BaseAuditableEntity {
     @PrePersist
     protected void onCreate() {
         LocalDateTime now = LocalDateTime.now();
-        if (createdAt == null) createdAt = now;
+        if (createdAt == null) {
+            createdAt = now;
+        }
         updatedAt = now;
     }
 
@@ -26,7 +31,4 @@ public abstract class BaseAuditableEntity {
     protected void onUpdate() {
         updatedAt = LocalDateTime.now();
     }
-
-    public LocalDateTime getCreatedAt() { return createdAt; }
-    public LocalDateTime getUpdatedAt() { return updatedAt; }
 }
