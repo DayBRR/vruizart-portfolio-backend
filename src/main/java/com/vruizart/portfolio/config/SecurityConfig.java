@@ -24,7 +24,7 @@ public class SecurityConfig {
                 .cors(cors -> {})
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/actuator/health/**").permitAll()
+                        .requestMatchers("/actuator/health/**", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/public/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/public/contact").permitAll()
                         .anyRequest().denyAll())
