@@ -12,16 +12,16 @@ import java.util.UUID;
 
 public interface ArtworkRepository extends JpaRepository<Artwork, UUID> {
 
-    @EntityGraph(attributePaths = {"collection", "technique", "style", "images"})
+    @EntityGraph(attributePaths = {"collection", "technique", "images"})
     List<Artwork> findByVisibleTrueOrderBySortOrderAscYearDescTitleAsc();
 
-    @EntityGraph(attributePaths = {"collection", "technique", "style", "images"})
+    @EntityGraph(attributePaths = {"collection", "technique", "images"})
     List<Artwork> findByVisibleTrueAndFeaturedTrueOrderBySortOrderAscYearDescTitleAsc();
 
-    @EntityGraph(attributePaths = {"collection", "technique", "style", "images"})
+    @EntityGraph(attributePaths = {"collection", "technique", "images"})
     Optional<Artwork> findBySlugAndVisibleTrue(String slug);
 
-    @EntityGraph(attributePaths = {"collection", "technique", "style", "images"})
+    @EntityGraph(attributePaths = {"collection", "technique", "images"})
     @Query("select distinct a from Artwork a where a.visible = true and a.collection.slug = :slug order by a.sortOrder asc, a.year desc, a.title asc")
     List<Artwork> findVisibleByCollectionSlug(@Param("slug") String slug);
 }
