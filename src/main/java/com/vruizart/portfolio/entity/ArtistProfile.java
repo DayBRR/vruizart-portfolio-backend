@@ -26,6 +26,9 @@ public class ArtistProfile extends BaseAuditableEntity {
     @Column(columnDefinition = "text")
     private String statement;
 
+    @Column(length = 500)
+    private String quote;
+
     @Column(name = "profile_image_url", length = 255)
     private String profileImageUrl;
 
