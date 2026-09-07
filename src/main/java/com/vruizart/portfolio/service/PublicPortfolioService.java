@@ -164,14 +164,14 @@ public class PublicPortfolioService {
 
     public List<SiteContentResponse> getSiteContent() {
         return siteContentRepository.findByActiveTrueOrderBySortOrderAsc().stream()
-                .map(c -> new SiteContentResponse(
-                        c.getKey(),
-                        c.getTitle(),
-                        c.getContent(),
-                        c.getType(),
-                        c.getImageUrl(),
-                        c.getSortOrder()
-                ))
+                .map(content -> SiteContentResponse.builder()
+                        .key(content.getKey())
+                        .title(content.getTitle())
+                        .content(content.getContent())
+                        .type(content.getType())
+                        .imageUrl(content.getImageUrl())
+                        .sortOrder(content.getSortOrder())
+                        .build())
                 .toList();
     }
 
