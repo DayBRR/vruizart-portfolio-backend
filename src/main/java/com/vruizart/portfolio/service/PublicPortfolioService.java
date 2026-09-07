@@ -3,6 +3,8 @@ package com.vruizart.portfolio.service;
 import com.vruizart.portfolio.dto.*;
 import com.vruizart.portfolio.entity.Artwork;
 import com.vruizart.portfolio.entity.ArtworkImage;
+import com.vruizart.portfolio.entity.Publication;
+import com.vruizart.portfolio.entity.PublicationImage;
 import com.vruizart.portfolio.repository.*;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -111,43 +113,53 @@ public class PublicPortfolioService {
                 .findByVisibleTrueOrderBySortOrderAscPublicationDateDescTitleAsc();
 
         return items.stream()
-                .map(p -> new PublicationResponse(
-                        p.getTitle(),
-                        p.getSlug(),
-                        p.getPublicationType(),
-                        p.getPublisherName(),
-                        p.getAuthorName(),
-                        p.getPublicationDate(),
-                        p.getDescription(),
-                        p.getExternalUrl(),
-                        p.getCoverImageUrl(),
-                        p.getFileUrl(),
-                        p.getReference(),
-                        p.isFeatured(),
-                        p.getSortOrder()
-                ))
+                .map(this::toPublicationResponse)
                 .toList();
     }
 
     public PublicationResponse getPublication(String slug) {
-        var p = publicationRepository.findBySlugAndVisibleTrue(slug)
-                .orElseThrow(() -> new EntityNotFoundException("Publication not found: " + slug));
+        var publication = publicationRepository.findBySlugAndVisibleTrue(slug)
+                .orElseThrow(() ->
+                        new EntityNotFoundException("Publication not found: " + slug)
+                );
 
-        return new PublicationResponse(
-                p.getTitle(),
-                p.getSlug(),
-                p.getPublicationType(),
-                p.getPublisherName(),
-                p.getAuthorName(),
-                p.getPublicationDate(),
-                p.getDescription(),
-                p.getExternalUrl(),
-                p.getCoverImageUrl(),
-                p.getFileUrl(),
-                p.getReference(),
-                p.isFeatured(),
-                p.getSortOrder()
-        );
+        return toPublicationResponse(publication);
+    }
+
+    private PublicationResponse toPublicationResponse(Publication publication) {
+        var images = publication.getImages() == null
+                ? List.<PublicationImageResponse>of()
+                : publication.getImages().stream()
+                .sorted(Comparator.comparing(PublicationImage::getSortOrder))
+                .map(this::toPublicationImageResponse)
+                .toList();
+
+        return PublicationResponse.builder()
+                .title(publication.getTitle())
+                .slug(publication.getSlug())
+                .publicationType(publication.getPublicationType())
+                .publisherName(publication.getPublisherName())
+                .authorName(publication.getAuthorName())
+                .publicationDate(publication.getPublicationDate())
+                .publicationYear(publication.getPublicationYear())
+                .description(publication.getDescription())
+                .externalUrl(publication.getExternalUrl())
+                .coverImageUrl(publication.getCoverImageUrl())
+                .fileUrl(publication.getFileUrl())
+                .reference(publication.getReference())
+                .featured(publication.isFeatured())
+                .sortOrder(publication.getSortOrder())
+                .images(images)
+                .build();
+    }
+
+    private PublicationImageResponse toPublicationImageResponse(PublicationImage image) {
+        return PublicationImageResponse.builder()
+                .imageUrl(image.getImageUrl())
+                .altText(image.getAltText())
+                .sortOrder(image.getSortOrder())
+                .cover(image.isCover())
+                .build();
     }
 
     public List<SiteContentResponse> getSiteContent() {

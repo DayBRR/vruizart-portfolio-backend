@@ -6,6 +6,8 @@ import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -25,7 +27,11 @@ public class Publication extends BaseAuditableEntity {
 
     @Enumerated(EnumType.STRING)
     @JdbcTypeCode(SqlTypes.NAMED_ENUM)
-    @Column(name = "publication_type", nullable = false, columnDefinition = "publication_type")
+    @Column(
+            name = "publication_type",
+            nullable = false,
+            columnDefinition = "publication_type"
+    )
     private PublicationType publicationType;
 
     @Column(name = "publisher_name", length = 150)
@@ -36,6 +42,9 @@ public class Publication extends BaseAuditableEntity {
 
     @Column(name = "publication_date")
     private LocalDate publicationDate;
+
+    @Column(name = "publication_year")
+    private Integer publicationYear;
 
     @Column(columnDefinition = "text")
     private String description;
@@ -60,4 +69,12 @@ public class Publication extends BaseAuditableEntity {
 
     @Column(name = "sort_order", nullable = false)
     private Integer sortOrder = 0;
+
+    @OneToMany(
+            mappedBy = "publication",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    @OrderBy("sortOrder ASC")
+    private List<PublicationImage> images = new ArrayList<>();
 }
