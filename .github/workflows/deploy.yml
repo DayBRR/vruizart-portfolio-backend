@@ -50,6 +50,25 @@ jobs:
           ssh-keyscan -p "$VPS_PORT" -H "$VPS_HOST" >> ~/.ssh/known_hosts
           chmod 600 ~/.ssh/known_hosts
 
+      - name: Check SSH key fingerprint
+        run: |
+          echo "GitHub Actions is using this key:"
+          ssh-keygen -lf ~/.ssh/vruizart_deploy
+
+      - name: Test SSH connection
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_PORT: ${{ secrets.VPS_PORT }}
+        run: |
+          ssh -vvv \
+            -i ~/.ssh/vruizart_deploy \
+            -o IdentitiesOnly=yes \
+            -o BatchMode=yes \
+            -p "$VPS_PORT" \
+            "$VPS_USER@$VPS_HOST" \
+            "echo SSH_OK"
+
       - name: Deploy backend
         env:
           VPS_HOST: ${{ secrets.VPS_HOST }}
@@ -58,6 +77,8 @@ jobs:
         run: |
           ssh \
             -i ~/.ssh/vruizart_deploy \
+            -o IdentitiesOnly=yes \
+            -o BatchMode=yes \
             -p "$VPS_PORT" \
             "$VPS_USER@$VPS_HOST" << 'EOF'
 
@@ -73,7 +94,6 @@ jobs:
 
           docker compose build backend
           docker compose up -d backend
-
           docker compose ps backend
 
           EOF
@@ -83,3 +103,5 @@ jobs:
           sleep 10
           curl --fail --silent --show-error \
             https://api.vruizart.com/api/public/profile > /dev/null
+
+          echo "Backend deployment OK"
