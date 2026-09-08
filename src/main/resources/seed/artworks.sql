@@ -1978,6 +1978,22 @@ VALUES
         24
     ),
     (
+        (SELECT id FROM collection WHERE slug = 'retratos'),
+        (SELECT id FROM technique WHERE name = 'Carboncillo sobre papel'),
+        'Salvador Dalí',
+        'salvador-dali',
+        2020,
+        NULL,
+        NULL,
+        30.00,
+        40.00,
+        300.00,
+        'AVAILABLE'::artwork_status,
+        FALSE,
+        TRUE,
+        25
+    ),
+    (
         (SELECT id FROM collection WHERE slug = 'otras-obras'),
         (SELECT id FROM technique WHERE name = 'Óleo sobre lienzo'),
         'Fondo marino',

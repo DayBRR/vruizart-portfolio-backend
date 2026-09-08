@@ -2739,3 +2739,25 @@ WHERE a.slug = 'tomas'
     WHERE ai.artwork_id = a.id
       AND ai.image_url = 'assets/images/artworks/ventanas-del-alma/Tomas.jpg'
 );
+
+INSERT INTO artwork_image (
+    artwork_id,
+    image_url,
+    alt_text,
+    sort_order,
+    is_main
+)
+SELECT
+    a.id,
+    'assets/images/artworks/retratos/Salvador Dali.jpg',
+    'Salvador Dali — Vicente Ruiz',
+    1,
+    TRUE
+FROM artwork a
+WHERE a.slug = 'salvador-dali'
+  AND NOT EXISTS (
+    SELECT 1
+    FROM artwork_image ai
+    WHERE ai.artwork_id = a.id
+      AND ai.image_url = 'assets/images/artworks/retratos/Salvador Dali.jpg'
+);
