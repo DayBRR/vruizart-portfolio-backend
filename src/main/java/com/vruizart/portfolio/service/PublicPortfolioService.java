@@ -8,11 +8,15 @@ import com.vruizart.portfolio.entity.PublicationImage;
 import com.vruizart.portfolio.repository.*;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional(readOnly = true)
@@ -56,28 +60,45 @@ public class PublicPortfolioService {
                 .toList();
     }
 
-    public List<ArtworkResponse> getArtworks(Boolean featured, String collectionSlug) {
-        List<Artwork> artworks;
+    public Page<ArtworkResponse> getArtworks(
+            String collectionSlug,
+            Pageable pageable
+    ) {
+        Page<UUID> idPage;
 
         if (collectionSlug != null && !collectionSlug.isBlank()) {
-            artworks = artworkRepository.findVisibleByCollectionSlug(collectionSlug);
-
-            if (Boolean.TRUE.equals(featured)) {
-                artworks = artworks.stream()
-                        .filter(Artwork::isFeatured)
-                        .toList();
-            }
-        } else if (Boolean.TRUE.equals(featured)) {
-            artworks = artworkRepository
-                    .findByVisibleTrueAndFeaturedTrueOrderBySortOrderAscYearDescTitleAsc();
+            idPage = artworkRepository.findVisibleIdsByCollectionSlug(
+                    collectionSlug,
+                    pageable
+            );
         } else {
-            artworks = artworkRepository
-                    .findByVisibleTrueOrderBySortOrderAscYearDescTitleAsc();
+            idPage = artworkRepository.findVisibleIds(pageable);
         }
 
-        return artworks.stream()
+        if (idPage.isEmpty()) {
+            return Page.empty(pageable);
+        }
+
+        List<Artwork> artworks =
+                artworkRepository.findAllWithDetailsByIdIn(idPage.getContent());
+
+        Map<UUID, Artwork> artworkById = artworks.stream()
+                .collect(Collectors.toMap(
+                        Artwork::getId,
+                        Function.identity()
+                ));
+
+        List<ArtworkResponse> content = idPage.getContent().stream()
+                .map(artworkById::get)
+                .filter(Objects::nonNull)
                 .map(this::toArtworkResponse)
                 .toList();
+
+        return new PageImpl<>(
+                content,
+                pageable,
+                idPage.getTotalElements()
+        );
     }
 
     public ArtworkResponse getArtwork(String slug) {
@@ -210,5 +231,21 @@ public class PublicPortfolioService {
                 mainImage,
                 images
         );
+    }
+
+    public List<ArtworkResponse> getHeroArtworks() {
+        return artworkRepository
+                .findByVisibleTrueAndHeroPositionIsNotNullOrderByHeroPositionAsc()
+                .stream()
+                .map(this::toArtworkResponse)
+                .toList();
+    }
+
+    public List<ArtworkResponse> getFeaturedArtworks() {
+        return artworkRepository
+                .findByVisibleTrueAndFeaturedTrueOrderBySortOrderAscYearDescTitleAsc()
+                .stream()
+                .map(this::toArtworkResponse)
+                .toList();
     }
 }

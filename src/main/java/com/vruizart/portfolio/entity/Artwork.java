@@ -58,6 +58,9 @@ public class Artwork extends BaseAuditableEntity {
     @Column(name = "is_featured", nullable = false)
     private boolean featured = false;
 
+    @Column(name = "hero_position")
+    private Integer heroPosition;
+
     @Column(name = "is_visible", nullable = false)
     private boolean visible = true;
 
