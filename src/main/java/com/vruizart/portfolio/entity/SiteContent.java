@@ -22,6 +22,9 @@ public class SiteContent extends BaseAuditableEntity {
     @Column(length = 255)
     private String title;
 
+    @Column(length = 255)
+    private String subtitle;
+
     @Column(columnDefinition = "text")
     private String content;
 
@@ -32,6 +35,15 @@ public class SiteContent extends BaseAuditableEntity {
 
     @Column(name = "image_url", length = 255)
     private String imageUrl;
+
+    @Column(name = "alt_text", length = 255)
+    private String altText;
+
+    @Column(name = "button_label", length = 100)
+    private String buttonLabel;
+
+    @Column(name = "button_url", length = 255)
+    private String buttonUrl;
 
     @Column(name = "sort_order", nullable = false)
     private Integer sortOrder = 0;

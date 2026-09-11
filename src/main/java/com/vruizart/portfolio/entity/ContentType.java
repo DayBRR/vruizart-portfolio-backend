@@ -5,5 +5,6 @@ public enum ContentType {
     IMAGE,
     TEXT_IMAGE,
     QUOTE,
-    VIDEO
+    VIDEO,
+    HERO
 }
