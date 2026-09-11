@@ -69,4 +69,9 @@ public class PublicPortfolioController {
     public List<SiteContentResponse> content() {
         return service.getSiteContent();
     }
+
+    @GetMapping("/content/hero")
+    public List<SiteContentResponse> heroContent() {
+        return service.getHeroContent();
+    }
 }

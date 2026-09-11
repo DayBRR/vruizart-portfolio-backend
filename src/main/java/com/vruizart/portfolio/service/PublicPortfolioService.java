@@ -1,10 +1,7 @@
 package com.vruizart.portfolio.service;
 
 import com.vruizart.portfolio.dto.*;
-import com.vruizart.portfolio.entity.Artwork;
-import com.vruizart.portfolio.entity.ArtworkImage;
-import com.vruizart.portfolio.entity.Publication;
-import com.vruizart.portfolio.entity.PublicationImage;
+import com.vruizart.portfolio.entity.*;
 import com.vruizart.portfolio.repository.*;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -185,15 +182,31 @@ public class PublicPortfolioService {
 
     public List<SiteContentResponse> getSiteContent() {
         return siteContentRepository.findByActiveTrueOrderBySortOrderAsc().stream()
-                .map(content -> SiteContentResponse.builder()
-                        .key(content.getKey())
-                        .title(content.getTitle())
-                        .content(content.getContent())
-                        .type(content.getType())
-                        .imageUrl(content.getImageUrl())
-                        .sortOrder(content.getSortOrder())
-                        .build())
+                .map(this::toSiteContentResponse)
                 .toList();
+    }
+
+    public List<SiteContentResponse> getHeroContent() {
+        return siteContentRepository
+                .findByActiveTrueAndTypeOrderBySortOrderAsc(ContentType.HERO)
+                .stream()
+                .map(this::toSiteContentResponse)
+                .toList();
+    }
+
+    private SiteContentResponse toSiteContentResponse(SiteContent content) {
+        return SiteContentResponse.builder()
+                .key(content.getKey())
+                .title(content.getTitle())
+                .subtitle(content.getSubtitle())
+                .content(content.getContent())
+                .type(content.getType())
+                .imageUrl(content.getImageUrl())
+                .altText(content.getAltText())
+                .buttonLabel(content.getButtonLabel())
+                .buttonUrl(content.getButtonUrl())
+                .sortOrder(content.getSortOrder())
+                .build();
     }
 
     private ArtworkResponse toArtworkResponse(Artwork artwork) {
