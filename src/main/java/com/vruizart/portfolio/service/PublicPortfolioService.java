@@ -59,21 +59,25 @@ public class PublicPortfolioService {
 
     public Page<ArtworkResponse> getArtworks(
             String collectionSlug,
+            String technique,
             Pageable pageable
     ) {
         Page<UUID> idPage;
+        // Normalize nonblank names in SQL, identically to stored names and options.
+        String techniqueName = technique == null || technique.isBlank() ? null : technique;
 
         if (collectionSlug != null && !collectionSlug.isBlank()) {
             idPage = artworkRepository.findVisibleIdsByCollectionSlug(
                     collectionSlug,
+                    techniqueName,
                     pageable
             );
         } else {
-            idPage = artworkRepository.findVisibleIds(pageable);
+            idPage = artworkRepository.findVisibleIds(techniqueName, pageable);
         }
 
         if (idPage.isEmpty()) {
-            return Page.empty(pageable);
+            return new PageImpl<>(List.of(), pageable, idPage.getTotalElements());
         }
 
         List<Artwork> artworks =
@@ -102,6 +106,11 @@ public class PublicPortfolioService {
         return artworkRepository.findBySlugAndVisibleTrue(slug)
                 .map(this::toArtworkResponse)
                 .orElseThrow(() -> new EntityNotFoundException("Artwork not found: " + slug));
+    }
+
+    public List<String> getArtworkTechniques(String collectionSlug) {
+        return artworkRepository.findVisibleTechniqueNames(
+                collectionSlug == null || collectionSlug.isBlank() ? null : collectionSlug);
     }
 
     public List<ExhibitionResponse> getExhibitions() {
