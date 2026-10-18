@@ -34,22 +34,39 @@ public interface ArtworkRepository extends JpaRepository<Artwork, UUID> {
     select a.id
     from Artwork a
     left join a.collection c
+    left join a.technique t
     where a.visible = true
+      and (:technique is null or cast(function('regexp_replace', t.name, '^[[:space:]]+|[[:space:]]+$', '', 'g') as String) = cast(function('regexp_replace', cast(:technique as String), '^[[:space:]]+|[[:space:]]+$', '', 'g') as String))
     order by c.sortOrder asc, a.sortOrder asc, a.id asc
     """)
-    Page<UUID> findVisibleIds(Pageable pageable);
+    Page<UUID> findVisibleIds(@Param("technique") String technique, Pageable pageable);
 
     @Query("""
     select a.id
     from Artwork a
+    left join a.technique t
     where a.visible = true
       and a.collection.slug = :slug
+      and (:technique is null or cast(function('regexp_replace', t.name, '^[[:space:]]+|[[:space:]]+$', '', 'g') as String) = cast(function('regexp_replace', cast(:technique as String), '^[[:space:]]+|[[:space:]]+$', '', 'g') as String))
     order by a.sortOrder asc, a.id asc
     """)
     Page<UUID> findVisibleIdsByCollectionSlug(
             @Param("slug") String slug,
+            @Param("technique") String technique,
             Pageable pageable
     );
+
+    @Query("""
+    select distinct cast(function('regexp_replace', t.name, '^[[:space:]]+|[[:space:]]+$', '', 'g') as String)
+    from Artwork a
+    join a.technique t
+    left join a.collection c
+    where a.visible = true
+      and (:collection is null or c.slug = :collection)
+      and cast(function('regexp_replace', t.name, '^[[:space:]]+|[[:space:]]+$', '', 'g') as String) <> ''
+    order by cast(function('regexp_replace', t.name, '^[[:space:]]+|[[:space:]]+$', '', 'g') as String) asc
+    """)
+    List<String> findVisibleTechniqueNames(@Param("collection") String collection);
 
     @EntityGraph(attributePaths = {"collection", "technique", "images"})
     @Query("""

@@ -61,13 +61,18 @@ Cuando exista `mvnw`, `mvnw.cmd` y `.mvn/wrapper`, puedes usar `Dockerfile`.
 - `GET /api/public/profile`
 - `GET /api/public/collections`
 - `GET /api/public/artworks`
-- `GET /api/public/artworks?featured=true`
+- `GET /api/public/artworks/featured`
+- `GET /api/public/artworks/hero`
+- `GET /api/public/artworks/techniques`
 - `GET /api/public/artworks/{slug}`
 - `GET /api/public/exhibitions`
 - `GET /api/public/publications`
 - `GET /api/public/publications/{slug}`
 - `POST /api/public/contact`
 - `GET /actuator/health`
+
+Contrato de filtros por colección/técnica, paginación, opciones y ejemplos:
+[API pública de obras y técnicas](docs/public-artwork-techniques.md).
 
 ## Próximo paso recomendado
 
